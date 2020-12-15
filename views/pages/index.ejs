@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(20.5937,78.9629),
+    zoom:2,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container-fluid">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <div id="googleMap" style="width:500px;height:380px;"></div>
+        
+                <section>
+                    <h2>India' Cases</h2>
+                    <table style="width: 65vw;">
+                    <tr style="text-transform: uppercase;">
+                    <th style="text-align: center;">State</th>
+                    <th style="text-align: center;">Confirmed</th>
+                    <th style="text-align: center;">Active</th>
+                    <th style="text-align: center;">Recovered</th>
+                    <th style="text-align: center;">Death</th>
+                    </tr>
+                    <!-- <div class="sweep-data"> -->
+                    <% mascots.forEach(function(mascot) { %>
+                        <tr style="background: rgba(0, 255, 0, 0.2); padding: 10px; border:1px solid black">
+                            <td style="border: 1px solid black; text-align: left;"><%= mascot.State %></>
+                            <td style="border: 1px solid black; text-align: center;"><%= mascot.Confirmed %></td>
+                            <td style="border: 1px solid black; text-align: center;"><%= mascot.Active %></td>
+                            <td style="border: 1px solid black; text-align: center;"><%= mascot.Recovered %></td>
+                            <td style="border: 1px solid black; text-align: center;"><%= mascot.Death %></td>
+                        </>
+                        <% }); %>
+                    <!-- </div> -->
+                    </table>
+                </section>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
